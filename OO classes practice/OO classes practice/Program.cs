@@ -4,7 +4,10 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+           StudentInformation Student1 = new StudentInformation();
+            Student1.SetStudentInfo(21, "John Doe");
+            Console.WriteLine("Student Name: " + Student1.GetStudentName());
+            Console.WriteLine("Student Age: " + Student1.GetStudentAge());
         }
     }
 }
