@@ -1,8 +1,7 @@
 ﻿using System;
 
-public class Class1
+public class Board
 {
-	public Class1()
-	{
-	}
+	int[] board = new int[9];
+
 }
