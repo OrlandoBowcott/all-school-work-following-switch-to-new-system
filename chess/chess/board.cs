@@ -1,4 +1,6 @@
-﻿public class Board
+﻿using System.ComponentModel.DataAnnotations;
+
+public class Board
 {
     private int[,] BoardArr;
     private int[,] PlayersArr;
@@ -19,19 +21,25 @@
         };
         PlayersArr = new int[,]
         {
-            {1,1,1,1,1,1,1,1 },
-            {1,1,1,1,1,1,1,1 },
-            {0,0,0,0,0,0,0,0 },
-            {0,0,0,0,0,0,0,0 },
-            {0,0,0,0,0,0,0,0 },
-            {0,0,0,0,0,0,0,0 },
-            {2,2,2,2,2,2,2,2 },
-            {2,2,2,2,2,2,2,2 }
-        }
+            {0,1,1,1,1,1,1,1,1 },
+            {0,1,1,1,1,1,1,1,1 },
+            {0,0,0,0,0,0,0,0,0 },
+            {0,0,0,0,0,0,0,0,0 },
+            {0,0,0,0,0,0,0,0,0 },
+            {0,0,0,0,0,0,0,0,0 },
+            {0,0,0,0,0,0,0,0,0 },
+            {0,2,2,2,2,2,2,2,2 },
+            {0,2,2,2,2,2,2,2,2 }
+        };
     }
     public int GetPositionUnit(int X, int Y)
     {
-        int ThisPosition = BoardArr[X, Y];
+        int ThisPosition = BoardArr[Y, X];
+        return ThisPosition;
+    }
+    public int GetSquarePlayer(int X, int Y)
+    {
+        int ThisPosition = PlayersArr[Y, X];
         return ThisPosition;
     }
     public void SetPosition(int X, int Y, int PieceID)
@@ -66,39 +74,87 @@
                 break;
         }
     }
-    public string[] GetMovementOptions(int ChosenX, int ChosenY)
+    public string[] GetMovementOptions(int ChosenX, int ChosenY, int ThisPlayer)
     {
         if (ChosenX < 1 || ChosenX > 8 || ChosenY < 1 || ChosenY > 8)
         {
             return new string[] { "Invalid coordinates" };
         }
+        if (GetSquarePlayer(ChosenX, ChosenY) != ThisPlayer)
+        {
+            return new string[] { "You do not own this piece" };
+        }
 
         int SelectedPiece = GetPositionUnit(ChosenX, ChosenY);
-
+        List<string> Possiblemoves = new();
         switch (SelectedPiece)
         {
             case 1:
-                bool[] ValidMoves = new bool[8];
-                if ()
-
+                bool[] AllowedMoves = new bool[8];
+                if (((ChosenY - 1) > 1) && (PlayersArr[ChosenY - 1, ChosenX]) != ThisPlayer)
+                {
+                    AllowedMoves[0] = true;
+                    Possiblemoves.Add("you can perform move 1");
+                }
+                if (((ChosenY - 1) > 1) && ((ChosenX+1) < 9) && (PlayersArr[ChosenY - 1, ChosenX+1]) != ThisPlayer)
+                {
+                    AllowedMoves[1] = true;
+                    Possiblemoves.Add("you can perform move 2");
+                }
+                if (((ChosenX+1) < 9) && (PlayersArr[ChosenY, ChosenX+1] != ThisPlayer))
+                {
+                    AllowedMoves[2] = true;
+                    Possiblemoves.Add("you can perform move 3");
+                }
+                if (((ChosenY+1) < 9) && ((ChosenX + 1) <9) && (PlayersArr[ChosenY +1, ChosenX +1] != ThisPlayer))
+                {
+                    AllowedMoves[3] = true;
+                    Possiblemoves.Add("you can perform move 4");
+                }
+                if (((ChosenY + 1) < 9) && (PlayersArr[ChosenY+1, ChosenX] != ThisPlayer )) 
+                {
+                    AllowedMoves[4] = true;
+                    Possiblemoves.Add("you can perform move 5");
+                }
+                if (ChosenY+1 < 9 && ChosenX - 1 > 1 && PlayersArr[ChosenY + 1, ChosenX - 1] != ThisPlayer)
+                {
+                    AllowedMoves[5] = true;
+                    Possiblemoves.Add("you can perform move 6");
+                }
+                if (ChosenX - 1 > 1 && PlayersArr[ChosenY, ChosenX-1] != ThisPlayer)
+                {
+                    AllowedMoves[6] = true;
+                    Possiblemoves.Add("you can perform move 7");
+                }
+                if (ChosenY + 1 < 9 && ChosenX -1 > 1 && PlayersArr[ChosenY+1, ChosenX -1 ] != ThisPlayer)
+                {
+                    AllowedMoves[7] = true;
+                    Possiblemoves.Add("you can perform move 8");
+                }
+                return Possiblemoves.ToArray();
                 break;
-            case 2: // Queen
-                    // Implement queen movement logic
+            case 2: 
+                return Possiblemoves.ToArray();
                 break;
             case 3: // Bishop
                     // Implement bishop movement logic
+                return Possiblemoves.ToArray();
                 break;
             case 4: // Knight
                     // Implement knight movement logic
+                return Possiblemoves.ToArray();
                 break;
             case 5: // Rook
                     // Implement rook movement logic
+                return Possiblemoves.ToArray();
                 break;
             case 6: // Pawn
                     // Implement pawn movement logic
+                return Possiblemoves.ToArray();
                 break;
             default:
                 // No piece selected or invalid piece
+                return Possiblemoves.ToArray();
                 break;
         }
     }

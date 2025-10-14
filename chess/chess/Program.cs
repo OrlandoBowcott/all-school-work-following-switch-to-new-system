@@ -16,9 +16,9 @@ namespace chess
     {
         static void DisplayBoard(Board chessBoard)
         {
-            for (int i = 0; i < 9; i++)
+            for (int j = 0; j < 9; j++)
             {
-                for (int j = 0; j < 9; j++)
+                for (int i = 0; i < 9; i++)
                 {
                     if (i == 0 && j == 0)
                     {
@@ -26,19 +26,19 @@ namespace chess
                     }
                     else if (i == 0)
                     {
-                        if (j == 8)
+                        if (j == 9)
                         {
                             Console.Write(chessBoard.GetPositionUnit(i, j) + "\n");
                         }
                         else
                         {
-                            Console.Write(chessBoard.GetPositionUnit(i, j) + " ");
+                            Console.Write(chessBoard.GetPositionUnit(i, j) + "  ");
                         }
 
                     }
                     else if (j == 0)
                     {
-                        Console.Write(chessBoard.GetPositionUnit(i, j) + "  ");
+                        Console.Write(chessBoard.GetPositionUnit(i, j) + " ");
                     }
                     else if (chessBoard.GetPositionUnit(i, j) == 1)
                     {
@@ -78,7 +78,11 @@ namespace chess
             Board chessBoard = new Board();
             
             DisplayBoard(chessBoard);
-
+            string[] results = chessBoard.GetMovementOptions(4, 1, 1);
+            for (int i = 1; i < results.Length; i++)
+            {
+                Console.WriteLine(results[i]);
+            }
 
 
         }
