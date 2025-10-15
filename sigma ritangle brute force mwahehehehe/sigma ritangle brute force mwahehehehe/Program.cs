@@ -49,16 +49,31 @@
                                 }
                             }
                         }
-                        
+
                     }
                 }
             }
             string[] stringsarr = foundStrings.ToArray();
-            for (int i = 0; i < stringsarr.Length; i++) 
+            for (int i = 0; i < stringsarr.Length; i++)
             {
+                List<int> valuse = new List<int>();
                 for (int j = 0; j < stringsarr[i].Length; j++)
                 {
-
+                    for (int selectletter = 0; selectletter < letters.Length; selectletter++)
+                    {
+                        if (stringsarr[i][j] == letters[selectletter])
+                        {
+                            valuse.Add(lettersValues[selectletter]);
+                            for (int k = 0; k < valuse.Count - 1; k++)
+                            {
+                                Console.Write(valuse[k] + " + ");
+                                if (k == 6)
+                                {
+                                    Console.Write("\n");
+                                }
+                            }
+                        }
+                    }
                 }
             }
             Console.WriteLine("Total loops: " + loops);
