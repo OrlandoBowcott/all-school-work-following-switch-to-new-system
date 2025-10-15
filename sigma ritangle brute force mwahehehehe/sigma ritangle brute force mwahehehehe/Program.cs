@@ -1,0 +1,58 @@
+﻿namespace sigma_ritangle_brute_force_mwahehehehe
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] lettersValues = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 };
+            int[] lettersValuesInverse = { 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+            char[] letters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            char[] lettersinverse = { 'z', 'y', 'x', 'w', 'v', 'u', 't', 's', 'r', 'q', 'p', 'o', 'n', 'm', 'l', 'k', 'j', 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a' };
+            char[] lettersToUse = { 'r', 'i', 't', 'a', 'n', 'g', 'l', 'e' };
+            int loops = 0;
+            for (int pos1 = 0; pos1 < 8; pos1++)
+            {
+                for (int pos2 = 0; pos2 < 8; pos2++)
+                {
+                    for (int pos3 = 0; pos3 < 8; pos3++)
+                    {
+                        for (int pos4 = 0; pos4 < 8; pos4++)
+                        {
+                            for (int pos5 = 0; pos5 < 8; pos5++)
+                            {
+                                for (int pos6 = 0; pos6 < 8; pos6++)
+                                {
+                                    for (int pos7 = 0; pos7 < 8; pos7++)
+                                    {
+                                        for (int pos8 = 0; pos8 < 8; pos8++)
+                                        {
+                                            string currentString = lettersToUse[pos1].ToString() + lettersToUse[pos2].ToString() + lettersToUse[pos3].ToString() + lettersToUse[pos4].ToString() + lettersToUse[pos5].ToString() + lettersToUse[pos6].ToString() + lettersToUse[pos7].ToString() + lettersToUse[pos8].ToString();
+                                            bool valid = true;
+                                            for (int char1 = 0; char1 < 8; char1++)
+                                            {
+                                                for (int char2 = 0; char2 < 8; char2++)
+                                                {
+                                                    if (currentString[char1] == currentString[char2] && char1 != char2)
+                                                    {
+                                                        valid = false;
+                                                    }
+
+                                                }
+                                            }
+                                            if (valid)
+                                            {
+                                                loops++;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+            }
+            Console.WriteLine("Total loops: " + loops);
+        }
+    }
+}
