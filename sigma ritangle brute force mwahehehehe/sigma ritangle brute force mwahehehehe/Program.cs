@@ -4,8 +4,7 @@
     {
         static void Main(string[] args)
         {
-            int[] lettersValues = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 };
-            char[] letters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            int[] lettersValues = { 17, 8, 19, 0, 13, 6, 11, 4 };
             char[] lettersToUse = { 'r', 'i', 't', 'a', 'n', 'g', 'l', 'e' };
             int loops = 0;
             List<string> foundStrings = new List<string>();
@@ -41,7 +40,7 @@
                                             if (valid)
                                             {
                                                 foundStrings.Add(currentString);
-                                                Console.WriteLine(currentString);
+                                                //Console.WriteLine(currentString);
                                                 loops++;
                                             }
                                         }
@@ -53,30 +52,77 @@
                     }
                 }
             }
+            Console.WriteLine("Total loops: " + loops);
             string[] stringsarr = foundStrings.ToArray();
+            int longestroute = 0;
+            int shortestroute = int.MaxValue;
+            string longestroutestring = "";
+            string shortestroutestring = "";
             for (int i = 0; i < stringsarr.Length; i++)
             {
-                List<int> valuse = new List<int>();
-                for (int j = 0; j < stringsarr[i].Length; j++)
+                int currentroutetotal = 0;
+                for (int j = 0; j < 7; j++)
                 {
-                    for (int selectletter = 0; selectletter < letters.Length; selectletter++)
+                    char L1 = stringsarr[i][j];
+                    char L2 = stringsarr[i][j + 1];
+                    int value1 = 0;
+                    int value2 = 0;
+                    int wrapDiff = 0;
+                    for (int k = 0; k < 8; k++)
                     {
-                        if (stringsarr[i][j] == letters[selectletter])
+                        if (L1 == lettersToUse[k])
                         {
-                            valuse.Add(lettersValues[selectletter]);
-                            for (int k = 0; k < valuse.Count - 1; k++)
-                            {
-                                Console.Write(valuse[k] + " + ");
-                                if (k == 6)
-                                {
-                                    Console.Write("\n");
-                                }
-                            }
+                            value1 = lettersValues[k];
+                            break;
                         }
                     }
+                    for (int k = 0; k < 8; k++)
+                    {
+                        if (L2 == lettersToUse[k])
+                        {
+                            value2 = lettersValues[k];
+                            break;
+                        }
+                    }
+                    int difference = value1 - value2;
+                    if (difference < 0)
+                    {
+                        difference = -difference;
+                    }
+                    if (value1 > value2)
+                    {
+                        wrapDiff = (26 - value1) + value2;
+                    }
+                    else if (value2 > value1)
+                    {
+                        wrapDiff = (26 - value2) + value1;
+                    }
+                    if ( difference <= wrapDiff)
+                    {
+                        currentroutetotal += difference;
+                    }
+                    if (wrapDiff < difference)
+                    {
+                        currentroutetotal += wrapDiff;
+                    }
                 }
+                if (currentroutetotal > longestroute)
+                {
+                    longestroute = currentroutetotal;
+                    longestroutestring = stringsarr[i];
+                }
+                if (currentroutetotal < shortestroute)
+                {
+                    shortestroute = currentroutetotal;
+                    shortestroutestring = stringsarr[i];
+
+                }
+               
             }
-            Console.WriteLine("Total loops: " + loops);
+            Console.WriteLine("Longest route: " + longestroute);
+            Console.WriteLine("Route: " + longestroutestring);
+            Console.WriteLine("Shortest route: " + shortestroute);
+            Console.WriteLine("Route: " + shortestroutestring);
         }
     }
 }
