@@ -40,7 +40,7 @@
                                             if (valid)
                                             {
                                                 foundStrings.Add(currentString);
-                                                //Console.WriteLine(currentString);
+                                                Console.WriteLine(currentString);
                                                 loops++;
                                             }
                                         }
