@@ -2,11 +2,11 @@
 
 public class BankAccount
 {
-    private string AccountNumber;
+    private long AccountNumber;
     private string AccountHolderName;
     private float Balance;
 
-    public BankAccount(string accountNumber, string accountHolderName, float initialBalance)
+    public BankAccount(long accountNumber, string accountHolderName, float initialBalance)
     {
         AccountNumber = accountNumber;
         AccountHolderName = accountHolderName;
@@ -44,6 +44,14 @@ public class BankAccount
         
     }
 
+    public float GetBalance()
+    {
+        return Balance;
+    }
+    public void SetBalance(float newBalance)
+    {
+        Balance = newBalance;
+    }
     public void DisplayAccountInfo()
     {
         Console.WriteLine($"Account Number: {AccountNumber}");

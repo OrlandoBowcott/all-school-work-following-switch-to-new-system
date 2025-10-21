@@ -1,12 +1,21 @@
-﻿public class SavingsAccount
+﻿public class SavingsAccount : BankAccount
 {
-    private int interestRate; // in percentage
-    private BankAccount bankAccountInfo;
+    private float interestRate; 
 
-    public SavingsAccount(string accountNumber, string accountHolderName, float initialBalance, int interestRate)
+    public SavingsAccount(float ir, long AN, string AHN, int IB) : base(AN, AHN, IB)
     {
-        this.interestRate = interestRate;
-        bankAccountInfo = new BankAccount(accountNumber, accountHolderName, initialBalance);
+        interestRate = ir;
     }
+
+    public void ApplyInterest(int YearsPassed)
+    {
+        float CurrentBalance = GetBalance();
+        for (int i = 0; i < YearsPassed; i++)
+        {
+            CurrentBalance = CurrentBalance + (CurrentBalance * (interestRate / 100));
+        }
+        SetBalance(CurrentBalance);
+    }
+
 
 }
