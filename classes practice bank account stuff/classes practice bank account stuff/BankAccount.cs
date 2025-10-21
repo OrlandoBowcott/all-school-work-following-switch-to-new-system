@@ -2,9 +2,9 @@
 
 public class BankAccount
 {
-    public string AccountNumber { get; private set; }
-    public string AccountHolderName { get; private set; }
-    public float Balance { get; private set; }
+    private string AccountNumber;
+    private string AccountHolderName;
+    private float Balance;
 
     public BankAccount(string accountNumber, string accountHolderName, float initialBalance)
     {
