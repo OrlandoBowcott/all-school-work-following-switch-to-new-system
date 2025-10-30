@@ -20,10 +20,9 @@ namespace MOARPOWERQ3
             }
             Console.WriteLine(divisibleBy25);
             Console.WriteLine(TotalOptions);
-            decimal probability = (divisibleBy25 / TotalOptions) * 100.0m;
+            decimal probability = (divisibleBy25 / TotalOptions);
             Console.WriteLine(probability);
-            //should be working idk why it isnt
-            Console.WriteLine(2550m / 7776m);
+
 
         }
     }
