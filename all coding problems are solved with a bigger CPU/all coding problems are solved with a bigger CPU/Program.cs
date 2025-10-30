@@ -5,8 +5,8 @@ namespace MOARPOWERQ3
     {
         static void Main(string[] args)
         {
-            float TotalOptions = 0;
-            float divisibleBy25 = 0;
+            decimal TotalOptions = 0;
+            decimal divisibleBy25 = 0;
             for (int i = 11111; i <= 66666; i++)
             {
                 string StringI = Convert.ToString(i);
@@ -20,8 +20,9 @@ namespace MOARPOWERQ3
             }
             Console.WriteLine(divisibleBy25);
             Console.WriteLine(TotalOptions);
-            float probability = (divisibleBy25 / TotalOptions) * 100;
+            decimal probability = (divisibleBy25 / TotalOptions) * 100.0m;
             Console.WriteLine(probability);
+            //should be working idk why it isnt
         }
     }
 }
