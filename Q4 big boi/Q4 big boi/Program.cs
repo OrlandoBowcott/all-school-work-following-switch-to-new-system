@@ -1,12 +1,10 @@
-﻿using System;
-
-namespace Q4_big_boi
+﻿namespace Q4_big_boi
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            string answer = "";
+            string answerorder = "";
             for (int a = 0; a < 6; a++)
             {
                 for (int b = 0; b < 6; b++)
@@ -17,19 +15,23 @@ namespace Q4_big_boi
                         {
                             for (int e = 0; e < 6; e++)
                             {
-                                if ( a == b || a == c || a == d || a == e ||
-                                    b == c || b == d || b == e||
-                                    c == d || c == e ||
-                                    d == e)
+                                for (int f = 0; f < 6; f++)
                                 {
-                                    continue;
-                                }
-                                if (2025 == 5 * 15 * a + 5 * 15 * b + 5 * 27 * c + 5 * 27 + d + 15 * 27 * e)
-                                {
-                                    answer = Convert.ToString(a) + Convert.ToString(b) + Convert.ToString(c) + Convert.ToString(d) + Convert.ToString(e);
-                                    Console.WriteLine($"5 * 15 * {a} + 5 * 15 * {b} + 5 * 27 * {c} + 5 * 27 + {d} + 15 * 27 * {e} = {5 * 15 * a + 5 * 15 * b + 5 * 27 * c + 5 * 27 + d + 15 * 27 * e}");
-                                    Console.WriteLine(answer);
+                                    if (a == b || a == c || a == d || a == e || a == f ||
+                                        b == c || b == d || b == e || b == f ||
+                                        c == d || c == e || c == f ||
+                                        d == e || d ==f||
+                                        e == f)
+                                    {
+                                        continue;
+                                    }
+                                    if (2025 == 5 * 15 * a + 5 * 15 * b + 5 * 27 * c + 5 * 27 * d + 15 * 27 * e + 15 * 27 * f)
+                                    {
+                                        answerorder = Convert.ToString(a) + Convert.ToString(b) + Convert.ToString(c) + Convert.ToString(d) + Convert.ToString(e) + Convert.ToString(f);
+                                        Console.WriteLine($"5 * 15 * {a} + 5 * 15 * {b} + 5 * 27 * {c} + 5 * 27 * {d} + 15 * 27 * {e} + 15 * 27 * {f} = {5 * 15 * a + 5 * 15 * b + 5 * 27 * c + 5 * 27 * d + 15 * 27 * e + 15 * 27 * f}");
+                                        Console.WriteLine(answerorder);
 
+                                    }
                                 }
                             }
                         }
