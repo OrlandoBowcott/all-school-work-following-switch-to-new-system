@@ -2,11 +2,11 @@
 
 public class BankAccount
 {
-    private long AccountNumber;
+    private int AccountNumber;
     private string AccountHolderName;
     private float Balance;
 
-    public BankAccount(long accountNumber, string accountHolderName, float initialBalance)
+    public BankAccount(int accountNumber, string accountHolderName, float initialBalance)
     {
         AccountNumber = accountNumber;
         AccountHolderName = accountHolderName;
@@ -51,6 +51,10 @@ public class BankAccount
     public void SetBalance(float newBalance)
     {
         Balance = newBalance;
+    }
+    public int GetAccountNumber()
+    {
+        return AccountNumber;
     }
     public void DisplayAccountInfo()
     {
