@@ -2,7 +2,7 @@
 {
     private float interestRate; 
 
-    public SavingsAccount(float ir, long AN, string AHN, int IB) : base(AN, AHN, IB)
+    public SavingsAccount(float ir, int AN, string AHN, int IB) : base(AN, AHN, IB)
     {
         interestRate = ir;
     }

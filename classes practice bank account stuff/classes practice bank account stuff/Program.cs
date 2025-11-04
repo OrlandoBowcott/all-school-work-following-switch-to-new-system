@@ -66,7 +66,7 @@ namespace classes_practice_bank_account_stuff
 
 
         }
-        static void Main(string[] args)
+        static void Main()
         {
             TestBankAccountClass();
             TestSavingsAccountClass();
