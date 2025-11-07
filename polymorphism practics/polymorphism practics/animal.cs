@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class Animal
+public abstract class Animal
 {
 	private string name;
 	private int age;
@@ -10,7 +10,10 @@ public class Animal
 		this.age = age;
 	}
 
-	public abstract Speak()
+	public abstract void Speak();
+
+	public void PrintDetails()
 	{
-	}
+		Console.WriteLine($"Name: {name}, Age: {age}");
+    }
 }

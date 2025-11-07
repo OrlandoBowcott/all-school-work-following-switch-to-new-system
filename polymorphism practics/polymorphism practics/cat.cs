@@ -8,7 +8,7 @@ public class Cat : Animal
 	public Cat(string breed, int evilnessfactor, string name, int age) : base(name,age)
 	{
 		this.breed = breed;
-		this.evilnessFactor = evilnessFactor;
+		this.evilnessFactor = evilnessfactor;
     }
 	public void Speak()
 	{
