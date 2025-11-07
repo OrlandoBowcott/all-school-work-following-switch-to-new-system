@@ -1,11 +1,16 @@
-﻿using System.Security.Cryptography;
-
-namespace clock_ritangle_question
+﻿namespace clock_ritangle_question
 {
+    public class time
+    {
+        public int hours { get; set; }
+        public int minutes { get; set; }
+        public int seconds { get; set; }
+    }
     internal class Program
     {
         static void Main(string[] args)
         {
+            double currentlowesttimevalue = 0;
             for (int hours = 0; hours < 12; hours++)
             {
                 for (int minutes = 0; minutes < 60; minutes++)
@@ -16,7 +21,7 @@ namespace clock_ritangle_question
                         double diffminsec = 0;
                         double diffsechour = 0;
 
-                        double hoursangle = 360 / 12 * hours;
+                        double hoursangle = 360 / 12 * hours + ();
                         double minutesangle = 360 / 60 * minutes;
                         double secondsangle = 360 / 60 * seconds;
                         if (hoursangle - minutesangle < 180 && hoursangle - minutesangle >= 0)
@@ -36,7 +41,7 @@ namespace clock_ritangle_question
                             diffhourmin = 360 - (minutesangle - hoursangle);
                         }
 
-                        if (minutes - secondsangle < 180 && minutesangle - secondsangle >= 0)
+                        if (minutesangle - secondsangle < 180 && minutesangle - secondsangle >= 0)
                         {
                             diffminsec = minutesangle - secondsangle;
                         }
@@ -69,12 +74,20 @@ namespace clock_ritangle_question
                         {
                             diffsechour = 360 - (hoursangle - secondsangle);
                         }
-
-
-
+                        double totalangle = diffhourmin + diffminsec + diffsechour;
+                        Console.WriteLine($"{hours}:{minutes}:{seconds} - Total Angle: {totalangle} degrees");
+                        if (currentlowesttimevalue == 0)
+                        {
+                            currentlowesttimevalue = totalangle;
+                        }
+                        else if (totalangle < currentlowesttimevalue)
+                        {
+                            currentlowesttimevalue = totalangle;
+                        }
                     }
                 }
             }
+            Console.WriteLine($"Lowest Total Angle: {currentlowesttimevalue} degrees");
         }
     }
 }
