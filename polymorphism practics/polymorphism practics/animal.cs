@@ -10,7 +10,7 @@ public class Animal
 		this.age = age;
 	}
 
-	public abstract speak()
+	public abstract Speak()
 	{
 	}
 }

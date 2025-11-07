@@ -5,12 +5,13 @@ public class Cat : Animal
 	private string breed;
 	private int evilnessFactor;
 
-	public Cat(string breed, int evilnessfactor) : Animal(string name, int age)
+	public Cat(string breed, int evilnessfactor, string name, int age) : base(name,age)
 	{
 		this.breed = breed;
 		this.evilnessFactor = evilnessFactor;
     }
+	public void Speak()
 	{
-
-	}
+		Console.WriteLine("Meow Meow");
+    }
 }
