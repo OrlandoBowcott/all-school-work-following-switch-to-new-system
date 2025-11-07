@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class Cat : Animal
+public abstract class Cat : Animal
 {
 	private string breed;
 	private int evilnessFactor;
@@ -10,7 +10,7 @@ public class Cat : Animal
 		this.breed = breed;
 		this.evilnessFactor = evilnessfactor;
     }
-	public void Speak()
+	public override void Speak()
 	{
 		Console.WriteLine("Meow Meow");
     }
