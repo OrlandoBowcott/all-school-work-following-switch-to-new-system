@@ -11,7 +11,7 @@
         static void Main(string[] args)
         {
             double currentlowesttimevalue = 0;
-            for (int hours = 0; hours < 11; hours++)
+            for (int hours = 0; hours < 23; hours++)
             {
                 for (int minutes = 0; minutes < 59; minutes++)
                 {
@@ -20,13 +20,19 @@
                         double diffhourmin = 0;
                         double diffminsec = 0;
                         double diffsechour = 0;
-
-                        double hoursangle = (360.0 / 12) * (hours % 12 + minutes / 60.0 + seconds / 3600.0);
-                        double minutesangle = (360.0 / 60) * (minutes + seconds / 60.0);
-                        double secondsangle = (360.0 / 60) * seconds;
-
+                        int analoguehours = hours;
                         if ((minutes - hours == seconds - minutes) && (minutes - hours != 0))
                         {
+                            if (hours > 12)
+                            {
+                                analoguehours = hours - 12;
+                            }
+
+                            double hoursangle = (360.0 / 12) * (analoguehours % 12 + minutes / 60.0 + seconds / 3600.0);
+                            double minutesangle = (360.0 / 60) * (minutes + seconds / 60.0);
+                            double secondsangle = (360.0 / 60) * seconds;
+
+
                             if (hoursangle - minutesangle < 180 && hoursangle - minutesangle >= 0)
                             {
                                 diffhourmin = hoursangle - minutesangle;
@@ -90,7 +96,7 @@
                                 currentlowesttimevalue = totalangle;
                             }
                         }
-                        
+
                     }
                 }
             }
