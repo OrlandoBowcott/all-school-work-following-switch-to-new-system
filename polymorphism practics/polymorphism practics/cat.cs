@@ -1,6 +1,6 @@
 ﻿using System;
 
-public abstract class Cat : Animal
+public class Cat : Animal
 {
 	private string breed;
 	private int evilnessFactor;

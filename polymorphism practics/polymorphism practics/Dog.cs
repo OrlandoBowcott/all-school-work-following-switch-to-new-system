@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class Dog
+public class Dog : Animal
 {
 	private string breed;
 	private int toysEviserated;
@@ -9,8 +9,8 @@ public class Dog
 		this.breed = breed;
 		this.toysEviserated = toysmurdered;
 	}
-	public override PrintDetails()
+	public override void Speak()
 	{
-
+		Console.WriteLine("wof");
 	}
 }

@@ -2,9 +2,14 @@
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Hello, World!");
+
+            var bob = new Cat("Siamese", 3, "bob", 2);
+            var jeff = new Dog("Labrador", 5, "jeff", 4);
+
+            bob.Speak();
+            jeff.Speak();
         }
     }
 }
